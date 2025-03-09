@@ -1,4 +1,4 @@
-FROM ghcr.io/ublue-os/silverblue-main:latest
+FROM ghcr.io/ublue-os/bazzite-deck:stable
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:stable
@@ -16,6 +16,7 @@ FROM ghcr.io/ublue-os/silverblue-main:latest
 COPY build.sh /tmp/build.sh
 
 RUN mkdir -p /var/lib/alternatives && \
+    rpm-ostree install kernel kernel-devel mesa-va-drivers mesa-vulkan-drivers mesa-libGL mesa-libEGL && \
+    echo 'split_lock_detect=off' | tee -a /etc/kernel/cmdline.d/99-custom.conf && \
     /tmp/build.sh && \
     ostree container commit
-    
