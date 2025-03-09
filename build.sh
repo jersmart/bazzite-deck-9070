@@ -10,7 +10,8 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf install -y tmux 
+# dnf install -y tmux 
+rpm-ostree install kernel kernel-devel mesa-va-drivers mesa-vulkan-drivers mesa-libGL mesa-libEGL
 
 # Use a COPR Example:
 #
