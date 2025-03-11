@@ -18,6 +18,9 @@ jobs:
           - bazzite-deck-9070
         major_version: [41]
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        
       - name: Upload S3
         # You may pin to the exact commit or the version.
         # uses: shallwefootball/upload-s3-action@4350529f410221787ccf424e50133cbc1b52704e
@@ -30,6 +33,6 @@ jobs:
           # aws bucket name
           aws_bucket: jersmart-bazzite-isos
           # directory to upload
-          source_dir: ${{ steps.upload-directory.outputs.iso-upload-dir }}
+          source_dir: ${{ github.workspace }}/installer/lorax_templates
           # destination directory for upload
           destination_dir: bazzite-deck-9070
